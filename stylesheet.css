@@ -5,9 +5,9 @@ td {
 	text-align:  center;
 	vertical-align:  middle;
 	font-family:  "Comic Sans MS", cursive, sans-serif;
-	font-size:  70px;
+	/* font-size:  70px; */
     cursor: pointer;
-    background-color: teal;
+    /* background-color: teal; */
 }
 
 .tapleChange {
@@ -19,6 +19,7 @@ td {
     top: 50px;
     position: relative;
     margin-left: -155px;
+    
 }
 
 table tr:first-child td {
@@ -58,6 +59,12 @@ h1{
   }
   .player {
     display: inline-block;
+    font-weight: bold;
+    padding: 15px;
+    
+  }
+  .player-2 {
+   display: inline-block;
     font-weight: bold;
     padding: 15px;
     
@@ -102,4 +109,8 @@ button{
 button:hover {
     background-color: #f44336;
   color: white;
+  }
+
+  body{
+      
   }
