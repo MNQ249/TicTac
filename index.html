@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <h1> Tic Tac Toe</h1>
+    <div class="score-board">
+        <div class="player">
+            <h4>Player </h4>
+            <div class="score-box">
+                15
+            </div>
+        </div>
+        <div class="Tie">
+            <h4>Tie</h4>
+            <div class="score-box">
+                10
+            </div>
+        </div>
+        <div class="computer">
+            <h4>Computer</h4>
+            <div class="score-box">
+                10
+            </div>
+        </div>
+
+        <div class="reset-game"></div>
+        <button type="button">Reset Game</button>
+    </div>
+
+    <h3>
+        <form id="playerForm" class="center" onchange="getTurn()">
+            <div>
+                Would you like to be X or O?
+                <br><br>
+            </div>
+            <input id="x" type="radio" name="radio" value="X">X
+            <input id="o" type="radio" name="radio" value="O">O
+        </form>
+    </h3>
+
+    
+<div class="tapleChange">
+    <table>
+        <tr class="row0">
+            <td class="cell" id="cell0"></td>
+            <td class="cell" id="cell1"></td>
+            <td class="cell" id="cell2"></td>
+        </tr>
+
+        <tr class="row1">
+            <td class="cell" id="cell3"></td>
+            <td class="cell" id="cell4"></td>
+            <td class="cell" id="cell5"></td>
+        </tr>
+
+
+        <tr class="row2">
+            <td class="cell" id="cell6"></td>
+            <td class="cell" id="cell7"></td>
+            <td class="cell" id="cell8"></td>
+        </tr>
+    </table>
+</div>
+
+
+    <script <script src="app.js"></script>
+
+</body>
+
+</html>
