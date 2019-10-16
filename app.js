@@ -19,7 +19,7 @@ const toWin = [
     [6, 4, 2]
 ]
 
-if(isNaN(parseInt(localStorage.getItem('player-score')))){
+if (isNaN(parseInt(localStorage.getItem('player-score')))) {
     localStorage.setItem('player-score', 0);
     localStorage.setItem('player2-score', 0);
     localStorage.setItem('Tie-score', 0);
@@ -154,6 +154,9 @@ const checkHowWin = function () {
     }
     else if (counter == 9) {
         alert("Tie");
+        both_tie.innerText = parseInt(both_tie.innerText) + 1;
+        console.log(both_tie.innerText);
+        localStorage.setItem('Tie-score', both_tie.innerText);
     }
 }
 
@@ -168,9 +171,7 @@ const endGame = function () {
     player_user2.innerText = parseInt(player_user2.innerText) + 1;
     localStorage.setItem('player2-score', player_user2.innerText);
 
-    both_tie.innerText = parseInt(both_tie.innerText) + 1;
-    console.log(both_tie.innerText);
-    localStorage.setItem('Tie-score', both_tie.innerText);
+
 }
 
 //dont forget work here
@@ -200,7 +201,7 @@ const tryAgain = document.querySelector('#try-again');
 const restarGame = function () {
 
     if (geetScore == NaN) {
-        
+
     }
     localStorage.setItem('player-score', 0);
     location.reload();
