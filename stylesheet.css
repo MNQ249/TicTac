@@ -1,3 +1,19 @@
+/* * {  
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  } */
+
+  body, html {  
+
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+  }
+  
+
 td {
 	border:  2px solid #333;
 	height:  100px;
@@ -11,15 +27,18 @@ td {
 }
 
 .tapleChange {
-    display: block;
+    /* display: block;
 	border-collapse: collapse;
-	position: static;
-	left: 50%;
-	/* margin-left: -155px; */
-    top: 50px;
-    position: relative;
-    margin-left: -155px;
+    position: static
+	left: 50%; */
+    /* margin-left: -155px; */
     
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 table tr:first-child td {
@@ -111,6 +130,3 @@ button:hover {
   color: white;
   }
 
-  body{
-      
-  }
