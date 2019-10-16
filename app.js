@@ -1,5 +1,12 @@
+let plyerTurn;
+const player_user = document.querySelector('#player_user');
+const player_computer = document.querySelector('#player_computer');
+const player_user2 = document.querySelector('#player_user2');
+const both_tie = document.querySelector('#both_tie');
 
+let counter = 0;
 
+let radios = document.querySelectorAll('input');
 
 const toWin = [
     [0, 1, 2],
@@ -11,24 +18,22 @@ const toWin = [
     [0, 4, 8],
     [6, 4, 2]
 ]
-document.querySelector('button').addEventListener('click', function(){ location.reload();})
 
-let counter = 0;
 
-let radios = document.querySelectorAll('input');
 
-let plyerTurn;
-const player_user = document.querySelector('#player_user');
-const player_computer = document.querySelector('#player_computer');
-const player_user2 = document.querySelector('#player_user2');
-const both_tie = document.querySelector('#both_tie');
+const geetScore = function(){
+   let s =  localStorage.getItem("player-score"); 
+   player_user.innerText  =s;
+}
+geetScore();
 
+//function do refrech page 
+document.querySelector('button').addEventListener('click', function () { location.reload(); })
+
+//function pick one of them x or o ex: if x start the next will be o and so on.
 const getTurn = function () {
     let pick;
     for (let i = 0; i < radios.length; i++) {
-
-
-
         if (radios[i].checked) {
             console.log("it is working");
             console.log(radios[i].value);
@@ -43,15 +48,11 @@ const getTurn = function () {
 
     }
 
-
-
 }
 getTurn();
-
+//inint new img with set some attribute and append to img
 const myFunction = function () {
-
     let img = document.createElement("img");
-
     let num = this.id.split('cell')[1]
     if (plyerTurn === true) {
         img.setAttribute('id', 'x');
@@ -61,23 +62,16 @@ const myFunction = function () {
         img.setAttribute("alt", "x");
         this.appendChild(img);
 
+ //this for loop seach whole array inside array to find location of each them           
         for (let i = 0; i < toWin.length; i++) {
             for (let j = 0; j < toWin[i].length; j++) {
                 if (num == toWin[i][j]) {
-                    toWin[i][j] = 'X'
+                    toWin[i][j] = 'X';
                 }
-
             }
-
-
         }
-
-        console.log(toWin)
-
-
+        console.log(toWin);
         plyerTurn = false;
-
-
 
     } else {
 
@@ -86,9 +80,7 @@ const myFunction = function () {
         img.setAttribute("width", "100px");
         img.setAttribute("height", "100px");
         img.setAttribute("alt", "o");
-
         this.appendChild(img);
-        // recordPlay();
         plyerTurn = true;
 
         for (let i = 0; i < toWin.length; i++) {
@@ -96,46 +88,27 @@ const myFunction = function () {
                 if (num == toWin[i][j]) {
                     toWin[i][j] = 'O'
                 }
-
             }
-
-
         }
-
-
-
-
-
     }
     counter++;
     this.removeEventListener('click', myFunction);
     checkHowWin()
-
+    
 }
-
+//to call all box then add new listenerevent 
 const cellX_O = document.querySelectorAll(".cell");
 for (let i = 0; i < cellX_O.length; i++) {
     cellX_O[i].addEventListener('click', myFunction);
 
 }
-
-
-// const recordPlay = function () {
-//     const hill = [];
-//     for (let i = 0; i < myFunction.length; i++) {
-//         // const result = array[i];
-//         hill.push(i);
-//         console.log(hill);
-//     }
-// }
-
-
-
+//function the way to win
 const checkHowWin = function () {
     if (toWin[0][0] == toWin[0][1] && toWin[0][0] == toWin[0][2]) {
         alert(toWin[0][0] + " - WIN");
         endGame();
     }
+
     else if (toWin[1][0] == toWin[1][1] && toWin[1][0] == toWin[1][2]) {
         alert(toWin[1][1] + " - WIN");
         endGame();
@@ -176,19 +149,74 @@ const checkHowWin = function () {
 }
 
 
-
+//
 const endGame = function () {
     for (let i = 0; i < cellX_O.length; i++) {
         cellX_O[i].removeEventListener('click', myFunction);
-
     }
-    player_user.innerText = player_user.innerText + 1
+player_user.innerText = parseInt(player_user.innerText) + 1;
+    localStorage.setItem('player-score', player_user.innerText)
+
+}
+
+//dont forget work here
+const cm = function () {
+
+    img.setAttribute('id', 'o');
+    img.setAttribute("src", "image/ooo.png");
+    img.setAttribute("width", "100px");
+    img.setAttribute("height", "100px");
+    img.setAttribute("alt", "o");
+    this.appendChild(img);
+    plyerTurn = true;
+
+    for (let i = 0; i < toWin.length; i++) {
+        for (let j = 0; j < toWin[i].length; j++) {
+            if (num == toWin[i][j]) {
+                toWin[i][j] = 'O'
+            }
+        }
+    }
 }
 
 
-// const scorePlayUser = 0;
-// const scorePlayComputer = 0;
-// const Tieplay =0;
 
-// if()
+//this for try play agin
+const tryAgain = document.querySelector('#try-again');
+const restarGame = function () {
 
+
+    localStorage.setItem('player-score', 0);
+    location.reload();
+
+// const removeImageElement = document.querySelectorAll('img');
+// console.log(removeImageElement);   
+//     for(let j =0 ; j< removeImageElement.length; j++){
+//         removeImageElement[j].remove();
+        // removeImageElement[j].removeAttribute('id');
+        // removeImageElement[j].removeAttribute("width" );
+        // removeImageElement[j].removeAttribute("src");
+        // removeImageElement[j].removeAttribute("height");
+        // removeImageElement[j].removeAttribute("alt");
+        // this.appendChild();
+        // removeImageElement[j].addEventListener('click', myFunction);
+    // }
+
+    //     for (let i = 0; i < cellX_O.length; i++) {
+    //         cellX_O[i].addEventListener('click', myFunction);
+        
+    //     }
+    //     toWin = [
+    //         [0, 1, 2],
+    //         [3, 4, 5],
+    //         [6, 7, 8],
+    //         [0, 3, 6],
+    //         [1, 4, 7],
+    //         [2, 5, 8],
+    //         [0, 4, 8],
+    //         [6, 4, 2]
+    //     ]
+    }
+    
+
+tryAgain.addEventListener('click', restarGame);
