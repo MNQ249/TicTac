@@ -1,13 +1,11 @@
 let plyerTurn;
+let computerTurn;
 const player_user = document.querySelector('#player_user');
 const player_computer = document.querySelector('#player_computer');
 // const player_user2 = document.querySelector('#player_user2');
 const both_tie = document.querySelector('#both_tie');
-
 let counter = 0;
-
 let radios = document.querySelectorAll('input');
-
 const toWin = [
     [0, 1, 2],
     [3, 4, 5],
@@ -31,7 +29,7 @@ const geetScore = function () {
     let scoreTie = localStorage.getItem("Tie-score");
     player_user.innerText = scorePlayer;
     // player_user2.innerText = scprePlayer2;
-    // both_tie.innerText = scoreTie;
+    both_tie.innerText = scoreTie;
 
 }
 geetScore();
@@ -42,27 +40,42 @@ document.querySelector('button').addEventListener('click', function () { locatio
 //function pick one of them x or o ex: if x start the next will be o and so on.
 const getTurn = function () {
     let pick;
-    for (let i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            console.log("it is working");
-            console.log(radios[i].value);
-
-            pick = radios[i].value
-            if (pick === "O") {
-                plyerTurn = false
-            } else {
-                plyerTurn = true;
+    // if(radios[2].checked){
+        playerTurn = true;
+        // computerTurn = false;
+    // }
+    //    else{ 
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                console.log("it is working");
+                console.log(radios[i].value);
+    
+                pick = radios[i].value
+                if (pick === "O") {
+                    plyerTurn = false
+                } else {
+                    plyerTurn = true;
+                }
             }
+    
         }
-
-    }
-
+    //    }
+    
+    
+    
 }
 getTurn();
 //inint new img with set some attribute and append to img
+
 const myFunction = function () {
     let img = document.createElement("img");
     let num = this.id.split('cell')[1]
+    console.log(this);
+    
+    // if(radios[2].checked){
+        // cm();
+    // }
+    // else{
     if (plyerTurn === true) {
         img.setAttribute('id', 'x');
         img.setAttribute("src", "image/xx.png");
@@ -103,7 +116,7 @@ const myFunction = function () {
     counter++;
     this.removeEventListener('click', myFunction);
     checkHowWin()
-
+    // }
 }
 //to call all box then add new listenerevent 
 const cellX_O = document.querySelectorAll(".cell");
@@ -159,8 +172,6 @@ const checkHowWin = function () {
         localStorage.setItem('Tie-score', both_tie.innerText);
     }
 }
-
-
 //
 const endGame = function () {
     for (let i = 0; i < cellX_O.length; i++) {
@@ -170,38 +181,47 @@ const endGame = function () {
     localStorage.setItem('player-score', player_user.innerText);
     // player_user2.innerText = parseInt(player_user2.innerText) + 1;
     // localStorage.setItem('player2-score', player_user2.innerText);
-
-
 }
 
 //dont forget work here
-const cm = function () {
+// const cm = function () {
+//     let img = document.createElement("img");
+//     let num = Math.floor(Math.random() * 9);
+//     let plaa = 'cell' + num;
+    
+//     if(!document.querySelector(`#${plaa}>img`)){
+//         if(document.querySelector(`#${plaa}>img`).getAttribute('alt') != 'x'){
 
-    img.setAttribute('id', 'o');
-    img.setAttribute("src", "image/ooo.png");
-    img.setAttribute("width", "100px");
-    img.setAttribute("height", "100px");
-    img.setAttribute("alt", "o");
-    this.appendChild(img);
-    plyerTurn = true;
+//             console.log(plaa);
+            
+//             img.setAttribute('id', 'o');
+//             img.setAttribute("src", "image/ooo.png");
+//             img.setAttribute("width", "100px");
+//             img.setAttribute("height", "100px");
+//             img.setAttribute("alt", "o");
+//             document.querySelector(`#${plaa}`).appendChild(img);
+//             console.log(document.querySelector(`#${plaa}>img`).getAttribute('alt'));
+//             plyerTurn = true;
+            
+//             for (let i = 0; i < toWin.length; i++) {
+//                 for (let j = 0; j < toWin[i].length; j++) {
+//                     if (num == toWin[i][j]) {
+//                         toWin[i][j] = 'O'
+//                     }
+//                 }
+//             }
+//         }
+//         else{
+//        cm()
+//     }
+// }
 
-    for (let i = 0; i < toWin.length; i++) {
-        for (let j = 0; j < toWin[i].length; j++) {
-            if (num == toWin[i][j]) {
-                toWin[i][j] = 'O'
-            }
-        }
-    }
-}
-
-
+// }
 
 //this for try play agin
 const tryAgain = document.querySelector('#try-again');
 const restarGame = function () {
-
     if (geetScore == NaN) {
-
     }
     localStorage.setItem('player-score', 0);
     location.reload();
@@ -209,8 +229,6 @@ const restarGame = function () {
     // location.reload();
     localStorage.setItem('Tie-score', 0);
     location.reload();
-
-
     // const removeImageElement = document.querySelectorAll('img');
     // console.log(removeImageElement);   
     //     for(let j =0 ; j< removeImageElement.length; j++){
@@ -239,6 +257,4 @@ const restarGame = function () {
     //         [6, 4, 2]
     //     ]
 }
-
-
 tryAgain.addEventListener('click', restarGame);
