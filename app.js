@@ -19,11 +19,20 @@ const toWin = [
     [6, 4, 2]
 ]
 
+if(isNaN(parseInt(localStorage.getItem('player-score')))){
+    localStorage.setItem('player-score', 0);
+    localStorage.setItem('player2-score', 0);
+    localStorage.setItem('Tie-score', 0);
+}
 
+const geetScore = function () {
+    let scorePlayer = localStorage.getItem("player-score");
+    let scprePlayer2 = localStorage.getItem("player2-score");
+    let scoreTie = localStorage.getItem("Tie-score");
+    player_user.innerText = scorePlayer;
+    player_user2.innerText = scprePlayer2;
+    both_tie.innerText = scoreTie;
 
-const geetScore = function(){
-   let s =  localStorage.getItem("player-score"); 
-   player_user.innerText  =s;
 }
 geetScore();
 
@@ -62,7 +71,7 @@ const myFunction = function () {
         img.setAttribute("alt", "x");
         this.appendChild(img);
 
- //this for loop seach whole array inside array to find location of each them           
+        //this for loop seach whole array inside array to find location of each them           
         for (let i = 0; i < toWin.length; i++) {
             for (let j = 0; j < toWin[i].length; j++) {
                 if (num == toWin[i][j]) {
@@ -94,7 +103,7 @@ const myFunction = function () {
     counter++;
     this.removeEventListener('click', myFunction);
     checkHowWin()
-    
+
 }
 //to call all box then add new listenerevent 
 const cellX_O = document.querySelectorAll(".cell");
@@ -154,9 +163,14 @@ const endGame = function () {
     for (let i = 0; i < cellX_O.length; i++) {
         cellX_O[i].removeEventListener('click', myFunction);
     }
-player_user.innerText = parseInt(player_user.innerText) + 1;
-    localStorage.setItem('player-score', player_user.innerText)
+    player_user.innerText = parseInt(player_user.innerText) + 1;
+    localStorage.setItem('player-score', player_user.innerText);
+    player_user2.innerText = parseInt(player_user2.innerText) + 1;
+    localStorage.setItem('player2-score', player_user2.innerText);
 
+    both_tie.innerText = parseInt(both_tie.innerText) + 1;
+    console.log(both_tie.innerText);
+    localStorage.setItem('Tie-score', both_tie.innerText);
 }
 
 //dont forget work here
@@ -185,26 +199,33 @@ const cm = function () {
 const tryAgain = document.querySelector('#try-again');
 const restarGame = function () {
 
-
+    if (geetScore == NaN) {
+        
+    }
     localStorage.setItem('player-score', 0);
     location.reload();
+    localStorage.setItem('player2-score', 0);
+    location.reload();
+    localStorage.setItem('Tie-score', 0);
+    location.reload();
 
-// const removeImageElement = document.querySelectorAll('img');
-// console.log(removeImageElement);   
-//     for(let j =0 ; j< removeImageElement.length; j++){
-//         removeImageElement[j].remove();
-        // removeImageElement[j].removeAttribute('id');
-        // removeImageElement[j].removeAttribute("width" );
-        // removeImageElement[j].removeAttribute("src");
-        // removeImageElement[j].removeAttribute("height");
-        // removeImageElement[j].removeAttribute("alt");
-        // this.appendChild();
-        // removeImageElement[j].addEventListener('click', myFunction);
+
+    // const removeImageElement = document.querySelectorAll('img');
+    // console.log(removeImageElement);   
+    //     for(let j =0 ; j< removeImageElement.length; j++){
+    //         removeImageElement[j].remove();
+    // removeImageElement[j].removeAttribute('id');
+    // removeImageElement[j].removeAttribute("width" );
+    // removeImageElement[j].removeAttribute("src");
+    // removeImageElement[j].removeAttribute("height");
+    // removeImageElement[j].removeAttribute("alt");
+    // this.appendChild();
+    // removeImageElement[j].addEventListener('click', myFunction);
     // }
 
     //     for (let i = 0; i < cellX_O.length; i++) {
     //         cellX_O[i].addEventListener('click', myFunction);
-        
+
     //     }
     //     toWin = [
     //         [0, 1, 2],
@@ -216,7 +237,7 @@ const restarGame = function () {
     //         [0, 4, 8],
     //         [6, 4, 2]
     //     ]
-    }
-    
+}
+
 
 tryAgain.addEventListener('click', restarGame);
