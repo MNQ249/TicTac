@@ -1,7 +1,7 @@
 let plyerTurn;
 const player_user = document.querySelector('#player_user');
 const player_computer = document.querySelector('#player_computer');
-const player_user2 = document.querySelector('#player_user2');
+// const player_user2 = document.querySelector('#player_user2');
 const both_tie = document.querySelector('#both_tie');
 
 let counter = 0;
@@ -21,17 +21,17 @@ const toWin = [
 
 if (isNaN(parseInt(localStorage.getItem('player-score')))) {
     localStorage.setItem('player-score', 0);
-    localStorage.setItem('player2-score', 0);
+    // localStorage.setItem('player2-score', 0);
     localStorage.setItem('Tie-score', 0);
 }
 
 const geetScore = function () {
     let scorePlayer = localStorage.getItem("player-score");
-    let scprePlayer2 = localStorage.getItem("player2-score");
+    // let scprePlayer2 = localStorage.getItem("player2-score");
     let scoreTie = localStorage.getItem("Tie-score");
     player_user.innerText = scorePlayer;
-    player_user2.innerText = scprePlayer2;
-    both_tie.innerText = scoreTie;
+    // player_user2.innerText = scprePlayer2;
+    // both_tie.innerText = scoreTie;
 
 }
 geetScore();
@@ -168,8 +168,8 @@ const endGame = function () {
     }
     player_user.innerText = parseInt(player_user.innerText) + 1;
     localStorage.setItem('player-score', player_user.innerText);
-    player_user2.innerText = parseInt(player_user2.innerText) + 1;
-    localStorage.setItem('player2-score', player_user2.innerText);
+    // player_user2.innerText = parseInt(player_user2.innerText) + 1;
+    // localStorage.setItem('player2-score', player_user2.innerText);
 
 
 }
@@ -205,8 +205,8 @@ const restarGame = function () {
     }
     localStorage.setItem('player-score', 0);
     location.reload();
-    localStorage.setItem('player2-score', 0);
-    location.reload();
+    // localStorage.setItem('player2-score', 0);
+    // location.reload();
     localStorage.setItem('Tie-score', 0);
     location.reload();
 
