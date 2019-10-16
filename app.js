@@ -69,6 +69,7 @@ getTurn();
 
 const myFunction = function () {
     let img = document.createElement("img");
+    //split and take only number 
     let num = this.id.split('cell')[1]
     console.log(this);
     
