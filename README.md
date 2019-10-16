@@ -8,4 +8,7 @@ Here is a working live demo:https://mnq249.github.io/TicTac/
 
 ##site
 here is Giv file to show how to play 
-![gif of site](Demoimage/Screen Recording 1441-02-18 at 1.03.37 AM.gif)
+![gif of site](https://gfycat.com/illiteratesparsejerboa)
+
+
+
